@@ -13,6 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import SvgIcon from "@mui/material/SvgIcon";
 
 const sections = ["About us", "Services", "Contact"];
+const htmlIDs = ["about-us", "services", "contact-us"];
 
 function PageHeader() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -21,12 +22,19 @@ function PageHeader() {
     setAnchorElNav(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (indexId: number) => {
     setAnchorElNav(null);
+    const contactElement = document.getElementById(htmlIDs[indexId]);
+    if (contactElement) {
+      contactElement.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "transparent" }}>
+    <AppBar
+      position="static"
+      sx={{ backgroundColor: "transparent", height: "10vh" }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <SvgIcon
@@ -101,10 +109,10 @@ function PageHeader() {
               display: { xs: "none", md: "flex" },
             }}
           >
-            {sections.map((section) => (
+            {sections.map((section, index) => (
               <Button
                 key={section}
-                onClick={handleCloseNavMenu}
+                onClick={() => handleCloseNavMenu(index)}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {section}
@@ -112,8 +120,20 @@ function PageHeader() {
             ))}
           </Box>
 
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">Register</Button>
+          <div className="w-44 flex justify-between">
+            <Button
+              className="md:ml-3 bg-gradient-to-r from-secondary-dark"
+              color="inherit"
+            >
+              Login
+            </Button>
+            <Button
+              className="md:ml-3 bg-gradient-to-r from-secondary-dark"
+              color="inherit"
+            >
+              Register
+            </Button>
+          </div>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -143,8 +163,11 @@ function PageHeader() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {sections.map((section) => (
-                <MenuItem key={section} onClick={handleCloseNavMenu}>
+              {sections.map((section, index) => (
+                <MenuItem
+                  key={section}
+                  onClick={() => handleCloseNavMenu(index)}
+                >
                   <Typography textAlign="center">{section}</Typography>
                 </MenuItem>
               ))}

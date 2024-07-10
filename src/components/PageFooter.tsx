@@ -7,10 +7,12 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 
 function PageFooter() {
   return (
-    <AppBar position="static" sx={{ backgroundColor: "transparent" }}>
-      <Container maxWidth="xl">
+    <AppBar
+      position="static"
+      sx={{ backgroundColor: "transparent", height: "10vh" }}
+    >
+      <Container sx={{ display: "flex", justifyContent: "end" }} maxWidth="xl">
         <Toolbar disableGutters>
-          <GitHubIcon />
           <Button color="inherit">
             <Typography
               noWrap
@@ -24,6 +26,7 @@ function PageFooter() {
               Open GitHub Project
             </Typography>
           </Button>
+          <GitHubIcon />
         </Toolbar>
       </Container>
     </AppBar>

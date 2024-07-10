@@ -1,10 +1,19 @@
-function PageLayout() {
+import { ReactNode } from "react";
+
+import PageFooter from "../components/PageFooter";
+import PageHeader from "../components/PageHeader";
+
+interface PageLayoutProps {
+  children: ReactNode;
+}
+
+function PageLayout({ children }: PageLayoutProps) {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline text-tertiary-dark">
-        PageLayout
-      </h1>
-    </>
+    <main className="bg-primary-dark">
+      <PageHeader />
+      {children}
+      <PageFooter />
+    </main>
   );
 }
 

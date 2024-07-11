@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -7,6 +10,21 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 
 function UserSideBar() {
+  const location = useLocation();
+  const [name, setName] = useState("");
+  const [rol, setRol] = useState("");
+
+  useEffect(() => {
+    if (location.pathname === "/student") {
+      setName("Alexander Bennett");
+      setRol("Student");
+    }
+    if (location.pathname === "/research") {
+      setName("Dr. Oliver Hastings");
+      setRol("Research");
+    }
+  }, []);
+
   return (
     <div className="shadow-[5px_0_15px_black] w-full h-full">
       <section className="w-full h-[40%] ">
@@ -32,10 +50,10 @@ function UserSideBar() {
                     fontSize: { xs: "1rem", md: "1.5rem" },
                   }}
                 >
-                  Alexander Bennett
+                  {name}
                 </Typography>
                 <p className="text-quaternary-dark font-medium tracking-wider">
-                  Student
+                  {rol}
                 </p>
               </div>
             </span>

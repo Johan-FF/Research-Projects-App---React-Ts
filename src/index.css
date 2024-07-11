@@ -34,7 +34,7 @@ body::-webkit-scrollbar-thumb:hover {
   width: 53ch;
 
   overflow: hidden;
-  animation: typing 6s steps(53), blink 0.5s 60s step-end alternate;
+  animation: typing 2s steps(53), blink 0.5s infinite step-end alternate;
 }
 
 @keyframes typing {

@@ -141,7 +141,7 @@ function Login() {
                   label="Email"
                   type="email"
                   variant="filled"
-                  onChange={() => emailHandler}
+                  onChange={emailHandler}
                 />
                 <TextField
                   required
@@ -151,17 +151,16 @@ function Login() {
                   type="password"
                   autoComplete="current-password"
                   variant="filled"
-                  onChange={() => passwordHandler}
+                  onChange={passwordHandler}
                 />
               </ThemeProvider>
             </Box>
           </span>
-          <span className="absolute -bottom-[5%] md:-bottom-[10%] left-0 w-full p-[4%] flex justify-end">
+          <div className="absolute -bottom-[5%] md:-bottom-[10%] left-0 w-full p-[4%] flex justify-end">
             <Button
-              type="submit"
               className="absolute bottom-8 right-8 md:ml-3 bg-gradient-to-r from-secondary-dark"
               color="inherit"
-              onClick={() => loginHandler}
+              onClick={loginHandler}
             >
               <Typography
                 sx={{
@@ -175,7 +174,7 @@ function Login() {
                 Login
               </Typography>
             </Button>
-          </span>
+          </div>
         </div>
       </section>
     </PageLayout>

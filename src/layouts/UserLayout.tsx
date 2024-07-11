@@ -1,10 +1,19 @@
-function UserLayout() {
+import { ReactNode } from "react";
+
+import UserSideBar from "../components/UserSideBar";
+
+interface UserLayoutProps {
+  children: ReactNode;
+}
+
+function UserLayout({ children }: UserLayoutProps) {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline text-tertiary-dark">
-        UserLayout
-      </h1>
-    </>
+    <main className="bg-primary-dark grid grid-cols-5 h-screen">
+      <div className="col-span-1">
+        <UserSideBar />
+      </div>
+      <div className="col-span-4 block">{children}</div>
+    </main>
   );
 }
 

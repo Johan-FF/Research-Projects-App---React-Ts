@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+import { updateProject } from "../redux/projectReducer";
+
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -16,6 +19,12 @@ function ResearchProjectCard({
   description,
   rating,
 }: ResearchProjectCardProps) {
+  const dispatch = useDispatch();
+
+  const projectSelectHandler = () => {
+    dispatch(updateProject({ name }));
+  };
+
   return (
     <Link to={"/editor"}>
       <Button
@@ -26,6 +35,7 @@ function ResearchProjectCard({
           marginBottom: "8px",
         }}
         className="text-quaternary-dark grid grid-cols-5"
+        onClick={projectSelectHandler}
       >
         <span className="col-span-1 flex justify-between items-center pl-8 w-[70%]">
           <span>

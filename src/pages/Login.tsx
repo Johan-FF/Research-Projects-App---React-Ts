@@ -3,6 +3,9 @@ import PageLayout from "../layouts/PageLayout";
 import { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+import { updateUser } from "../redux/userSlice";
+
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -85,6 +88,7 @@ const customTheme = (outerTheme: Theme) =>
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const outerTheme = useTheme();
 
@@ -99,10 +103,18 @@ function Login() {
   const loginHandler = () => {
     if (password === "" || email === "") return;
 
-    if (password === "password" && email === "student@gmail.com")
-      navigate("/student");
-    else if (password === "password" && email === "research@gmail.com")
-      navigate("/research");
+    const idUser = Math.floor(Math.random() * 10) + 1;
+    fetch(`https://jsonplaceholder.typicode.com/users/${idUser}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        dispatch(updateUser(data));
+        if (password === "password" && email === "student@gmail.com")
+          navigate("/student");
+        else if (password === "password" && email === "research@gmail.com")
+          navigate("/research");
+      })
+      .catch((error) => console.log(error));
   };
 
   return (

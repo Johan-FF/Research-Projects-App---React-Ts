@@ -1,6 +1,9 @@
 import Quill from "quill";
 import { useState, useEffect, MouseEvent } from "react";
 
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
+
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,6 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 
 function Editor() {
+  const project = useSelector((state: RootState) => state.project);
   const [quill, setQuill] = useState<null | Quill>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -52,7 +56,7 @@ function Editor() {
                   <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                  Photos
+                  {project.name}
                 </Typography>
 
                 <div>

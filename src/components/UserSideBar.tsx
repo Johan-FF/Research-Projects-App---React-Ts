@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
+
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -10,19 +13,15 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 
 function UserSideBar() {
+  const user = useSelector((state: RootState) => state.user);
   const location = useLocation();
   const [name, setName] = useState("");
   const [rol, setRol] = useState("");
 
   useEffect(() => {
-    if (location.pathname === "/student") {
-      setName("Alexander Bennett");
-      setRol("Student");
-    }
-    if (location.pathname === "/research") {
-      setName("Dr. Oliver Hastings");
-      setRol("Research");
-    }
+    console.log(user);
+    setName(user.name);
+    setRol(location.pathname === "/student" ? "Student" : "Research");
   }, []);
 
   return (

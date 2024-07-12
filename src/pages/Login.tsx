@@ -1,4 +1,5 @@
-import PageLayout from "../layouts/PageLayout";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 import { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +17,8 @@ import {
   Theme,
   useTheme,
 } from "@mui/material/styles";
+
+import PageLayout from "../layouts/PageLayout";
 
 const customTheme = (outerTheme: Theme) =>
   createTheme({
@@ -86,11 +89,13 @@ const customTheme = (outerTheme: Theme) =>
   });
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { setToken } = useContext(AuthContext);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const outerTheme = useTheme();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const emailHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -107,8 +112,8 @@ function Login() {
     fetch(`https://jsonplaceholder.typicode.com/users/${idUser}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         dispatch(updateUser(data));
+        setToken("ksdfbskhfbdjk");
         if (password === "password" && email === "student@gmail.com")
           navigate("/student");
         else if (password === "password" && email === "research@gmail.com")

@@ -41,7 +41,7 @@ function Editor() {
 
   return (
     <main className="bg-primary-dark">
-      <section className="w-full h-[16vh]">
+      <section className="w-full h-[20vh] md:h-[16vh]">
         <div>
           <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" sx={{ backgroundColor: "transparent" }}>
@@ -139,7 +139,7 @@ function Editor() {
           </span>
         </div>
       </section>
-      <section className="w-full min-h-[84vh] flex justify-center text-quaternary-dark pb-8">
+      <section className="w-full min-h-[80vh] md:min-h-[84vh] flex justify-center text-quaternary-dark pb-8">
         <div className="relative h-[90vh] md:h-[1123px] w-[90%] md:w-[794px]">
           <span className="absolute top-0 left-0 h-full w-full bg-black opacity-50 "></span>
 

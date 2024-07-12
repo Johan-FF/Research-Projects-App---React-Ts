@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import { AuthContext } from "../providers/AuthProvider";
 
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Button from "@mui/material/Button";
@@ -13,16 +14,20 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 
 function UserSideBar() {
+  const { logout } = useContext(AuthContext);
   const user = useSelector((state: RootState) => state.user);
   const location = useLocation();
   const [name, setName] = useState("");
   const [rol, setRol] = useState("");
 
   useEffect(() => {
-    console.log(user);
     setName(user.name);
     setRol(location.pathname === "/student" ? "Student" : "Research");
   }, []);
+
+  const logoutHandler = () => {
+    logout();
+  };
 
   return (
     <div className="shadow-[5px_0_15px_black] w-full h-full">
@@ -89,6 +94,7 @@ function UserSideBar() {
         <Button
           className="bg-gradient-to-r from-secondary-dark"
           color="inherit"
+          onClick={logoutHandler}
         >
           <Typography
             sx={{

@@ -1,4 +1,4 @@
-import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
@@ -7,7 +7,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 
 function PageFooter() {
   return (
-    <AppBar
+    <Box
       position="static"
       sx={{ backgroundColor: "transparent", height: "10vh" }}
     >
@@ -17,8 +17,9 @@ function PageFooter() {
             <Typography
               noWrap
               component="a"
-              href=""
+              href="https://github.com/Johan-FF/Research-Projects-App---React-Ts"
               sx={{
+                color: "#FFF5E1",
                 fontWeight: 500,
                 letterSpacing: ".1rem",
               }}
@@ -26,10 +27,14 @@ function PageFooter() {
               Open GitHub Project
             </Typography>
           </Button>
-          <GitHubIcon />
+          <GitHubIcon
+            sx={{
+              fill: "#FFF5E1",
+            }}
+          />
         </Toolbar>
       </Container>
-    </AppBar>
+    </Box>
   );
 }
 export default PageFooter;

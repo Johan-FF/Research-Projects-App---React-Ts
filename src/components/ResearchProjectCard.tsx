@@ -64,13 +64,13 @@ function ResearchProjectCard({
                   justifyContent: "center",
                 }}
               >
-                <Typography variant="caption" component="div">{`${Math.round(
-                  rating
-                )}`}</Typography>
+                <Typography variant="caption" component="div">
+                  {`${Math.round(rating)}`}
+                </Typography>
               </Box>
             </Box>
           </span>
-          <p className="flex justify-center w-[80%]">
+          <span className="flex justify-center w-[80%]">
             <Typography
               sx={{
                 color: "#FFF5E1",
@@ -82,7 +82,7 @@ function ResearchProjectCard({
             >
               {name}
             </Typography>
-          </p>
+          </span>
         </span>
         <span className="col-span-4 p-8 text-quaternary-dark text-xs">
           {description}

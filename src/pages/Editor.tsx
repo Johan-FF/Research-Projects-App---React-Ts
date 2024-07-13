@@ -41,7 +41,7 @@ function Editor() {
 
   return (
     <main className="bg-primary-dark">
-      <section className="w-full h-[20vh] md:h-[16vh]">
+      <section className="w-full h-[30vh] md:h-[24vh] lg:h-[16vh]">
         <div>
           <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" sx={{ backgroundColor: "transparent" }}>

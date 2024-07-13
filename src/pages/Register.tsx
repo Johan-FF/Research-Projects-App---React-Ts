@@ -99,8 +99,8 @@ function Register() {
 
   return (
     <PageLayout>
-      <section className="h-screen md:h-[80vh] w-full flex justify-center items-center">
-        <div className="w-[90%] md:w-[70%] h-[80%] relative">
+      <section className="h-screen 2xl:h-[40vh] w-full flex justify-center items-center">
+        <div className="w-[90%] md:w-[70%] lg:max-w-[50vw] h-[80%] lg:h-[80%] 2xl:h-[65%] relative">
           <span className="absolute top-0 left-0 rounded-3xl h-full w-full bg-black opacity-50 shadow-2xl"></span>
           <span className="absolute top-0 left-0 w-full px-[4%] py-[2%]">
             <Typography
@@ -116,11 +116,14 @@ function Register() {
               Register
             </Typography>
           </span>
-          <span className="absolute top-[20%] left-0 w-full shadow-2xl p-[4%] bg-secondary-dark">
+          <span className="absolute top-[10%] lg:top-[15%] left-0 w-full shadow-2xl p-[4%] bg-secondary-dark">
             <Box
               component="form"
               sx={{
-                "& .MuiTextField-root": { m: 1, width: "45ch" },
+                "& .MuiTextField-root": {
+                  m: 1,
+                  width: { xs: "28ch", sm: "44ch", md: "44ch" },
+                },
               }}
               noValidate
               autoComplete="on"
@@ -168,7 +171,7 @@ function Register() {
               </ThemeProvider>
             </Box>
           </span>
-          <span className="absolute -bottom-[5%] md:-bottom-[10%] left-0 w-full p-[4%] flex justify-end">
+          <span className="absolute -bottom-[5%] md:-bottom-[10%] lg:bottom-0 left-0 w-full p-[4%] flex justify-end">
             <Button
               className="absolute bottom-8 right-8 md:ml-3 bg-gradient-to-r from-secondary-dark"
               color="inherit"

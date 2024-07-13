@@ -9,7 +9,7 @@ interface PageLayoutProps {
 
 function PageLayout({ children }: PageLayoutProps) {
   return (
-    <main className="bg-primary-dark block">
+    <main className="bg-primary-dark block w-screen xl:w-auto">
       <PageHeader />
       {children}
       <PageFooter />

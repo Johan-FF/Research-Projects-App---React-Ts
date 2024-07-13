@@ -31,7 +31,7 @@ const projects = [
 function Student() {
   return (
     <UserLayout>
-      <div className="w-full h-full p-[4%]">
+      <div className="w-full h-auto md:h-full p-[4%]">
         <section className="flex justify-between items-center">
           <Typography
             className="gradient-text"

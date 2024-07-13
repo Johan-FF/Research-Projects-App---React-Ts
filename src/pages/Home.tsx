@@ -41,7 +41,7 @@ function Home() {
 
   return (
     <PageLayout>
-      <section className="relative overflow-x-clip md:h-screen">
+      <section className="relative overflow-x-clip h-[1400px] md:h-auto md:min-h-[800px] lg:min-h-[1100px] xl:min-h-[600px] 2xl:h-[800px]">
         <div className="absolute top-0 left-0 h-[80vh] p-[4%]">
           <Typography
             id="about-us"
@@ -51,12 +51,12 @@ function Home() {
             sx={{
               fontWeight: 700,
               letterSpacing: ".1rem",
-              fontSize: { xs: "4rem", md: "6rem" },
+              fontSize: { xs: "3rem", md: "6rem" },
             }}
           >
             Optimizes academic excellence
           </Typography>
-          <p className="text-quaternary-dark font-medium tracking-wider mt-8 max-w-sm md:max-w-md">
+          <p className="text-quaternary-dark font-medium tracking-wider mt-8 max-w-sm lg:max-w-lg">
             Monetizes the correction of university research projects and
             facilitates direct collaboration between students and expert
             professors.
@@ -68,7 +68,7 @@ function Home() {
           <span className="absolute -right-1/3 md:right-[4%] -bottom-[10%] md:-bottom-[20%] rounded-full bg-tertiary-dark w-96 h-96 md:w-[468px] md:h-[468px]"></span>
         </div>
 
-        <div className="bottom-[20%] left-0 relative w-full flex md:flex-row flex-wrap justify-evenly items-center">
+        <div className="top-[26%] sm:top-[22%] md:top-[35%] lg:top-[40%] xl:top-[32%] 2xl:top-[50%] left-0 absolute min-h-screen 2xl:min-h-[20vh] w-full flex flex-col sm:flex-wrap sm:flex-row justify-evenly items-center md:p-[2%]">
           <div className="sm:mb-3 relative rounded-xl p-1 h-64 w-64">
             <span className="absolute top-0 left-0 rounded-xl p-1 h-64 w-64 bg-black opacity-50 "></span>
             <p className="absolute top-0 left-0 rounded-xl p-8 h-64 w-64 text-quaternary-dark text-center text-xl">
@@ -116,8 +116,8 @@ function Home() {
         </div>
       </section>
 
-      <section className="h-auto md:h-screen w-auto mt-[4%] flex flex-col md:flex-row">
-        <div className="md:w-1/2 h-[60vh] md:h-[100vh] p-[4%]">
+      <section className="h-auto md:h-screen xl:h-auto w-full mt-[4%] flex flex-col md:flex-row p-[2%]">
+        <div className="md:w-1/2 h-[90vh] md:h-[100vh] xl:h-[100vh] 2xl:h-[30vh] p-[4%]">
           <Typography
             id="services"
             variant="h3"
@@ -137,9 +137,9 @@ function Home() {
           </p>
         </div>
 
-        <div className="relative md:w-1/2 h-[80vh] md:h-[100vh]">
+        <div className="relative md:w-1/2 h-[85vh] md:h-[100vh] xl:h-[100vh] 2xl:h-[30vh]">
           <span className="absolute md:top-[8%] left-[4%] md:left-0 rounded-3xl h-[100%] md:h-[80%] w-[90%] bg-black opacity-50 shadow-2xl"></span>
-          <p className="absolute md:top-[8%] left-[4%] md:left-0 rounded-3xl h-[100%] md:h-[80%] w-[90%] text-quaternary-dark text-base md:text-xl p-[2%] md:p-[4%]">
+          <p className="absolute md:top-[8%] left-[4%] md:left-0 rounded-3xl h-[100%] md:h-[80%] w-[90%] text-quaternary-dark text-xs lg:text-base xl:text-xl p-[2%] md:p-[4%]">
             Research represents the driving force of human knowledge, a
             systematic and rigorous process that seeks to discover, interpret
             and transform reality. Through scientific methods and analysis,
@@ -217,23 +217,22 @@ function Home() {
         </div>
       </section>
 
-      <section className="mt-[5%] md:mt-0 relative h-[40vh] md:h-[80vh]">
-        <div className="w-full h-full top-0 left-0 relative blur-3xl opacity-60 md:opacity-100 overflow-y-clip">
-          <span className="absolute -left-[20%] -bottom-[20%] md:bottom-0 rounded-full bg-secondary-dark w-96 h-96 md:w-[468px] md:h-[468px]"></span>
+      <section className="mt-[5%] md:mt-0 relative h-[40vh] md:h-[55vh] lg:h-[70vh] xl:h-[70vh] 2xl:h-[20vh]">
+        <div className="w-full h-full top-0 left-0 relative blur-3xl opacity-60 md:opacity-100 overflow-clip">
           <span className="absolute left-0 -bottom-[70%] md:-bottom-[20%] rounded-full bg-tertiary-dark w-96 h-96 md:w-[468px] md:h-[468px]"></span>
+          <span className="absolute -left-[20%] -bottom-[20%] md:bottom-0 rounded-full bg-secondary-dark w-96 h-96 md:w-[468px] md:h-[468px]"></span>
         </div>
 
-        <div className="absolute top-0 left-0 h-auto md:h-[20vh] p-[4%]">
+        <div className="w-full absolute top-0 left-0 h-auto md:h-[20vh] p-[4%]">
           <Typography
             id="contact-us"
-            variant="h1"
-            component="h2"
+            variant="h5"
             className="gradient-text"
             sx={{
-              fontWeight: 500,
+              fontWeight: 900,
               textAlign: "center",
               letterSpacing: ".1rem",
-              fontSize: { xs: "2rem", md: "4rem" },
+              fontSize: { xs: "1rem", sm: "2rem", md: "4rem" },
             }}
           >
             Contact us through our social media channels...
@@ -247,30 +246,30 @@ function Home() {
               <Button
                 color="inherit"
                 sx={{ borderRadius: "10%" }}
-                className="h-24 w-24 bg-gradient-to-r from-cyan-500 to-blue-500"
+                className="h-12 md:h-24 w-12 md:w-24 bg-gradient-to-r from-cyan-500 to-blue-500"
               >
-                <FacebookIcon sx={{ scale: "4" }} />
+                <FacebookIcon sx={{ scale: { xs: "2", md: "4" } }} />
               </Button>
               <Button
                 color="inherit"
                 sx={{ borderRadius: "10%" }}
-                className="h-24 w-24 bg-gradient-to-r from-purple-500 to-pink-500"
+                className="h-12 md:h-24 w-12 md:w-24 bg-gradient-to-r from-purple-500 to-pink-500"
               >
-                <InstagramIcon sx={{ scale: "4" }} />
+                <InstagramIcon sx={{ scale: { xs: "2", md: "4" } }} />
               </Button>
               <Button
                 color="inherit"
                 sx={{ borderRadius: "10%" }}
-                className="h-24 w-24 bg-gradient-to-r from-violet-500 to-fuchsia-500"
+                className="h-12 md:h-24 w-12 md:w-24 bg-gradient-to-r from-violet-500 to-fuchsia-500"
               >
-                <XIcon sx={{ scale: "4" }} />
+                <XIcon sx={{ scale: { xs: "2", md: "4" } }} />
               </Button>
               <Button
                 color="inherit"
                 sx={{ borderRadius: "10%" }}
-                className="h-24 w-24 bg-gradient-to-r from-sky-500 to-indigo-500"
+                className="h-12 md:h-24 w-12 md:w-24 bg-gradient-to-r from-sky-500 to-indigo-500"
               >
-                <LinkedInIcon sx={{ scale: "4" }} />
+                <LinkedInIcon sx={{ scale: { xs: "2", md: "4" } }} />
               </Button>
             </ButtonGroup>
           </Box>

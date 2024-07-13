@@ -124,8 +124,8 @@ function Login() {
 
   return (
     <PageLayout>
-      <section className="h-screen md:h-[80vh] w-full flex justify-center items-center">
-        <div className="w-[90%] md:w-[70%] h-[50%] md:h-[60%] relative">
+      <section className="h-[75vh] md:h-[80vh] 2xl:h-[30vh] w-full flex justify-center items-center">
+        <div className="w-[90%] md:w-[70%] lg:max-w-[50vw] h-[70%] md:h-[75%] lg:h-[70%] 2xl:h-[60%] relative">
           <span className="absolute top-0 left-0 rounded-3xl h-full w-full bg-black opacity-50 shadow-2xl"></span>
           <span className="absolute top-0 left-0 w-full px-[4%] py-[2%]">
             <Typography
@@ -145,7 +145,10 @@ function Login() {
             <Box
               component="form"
               sx={{
-                "& .MuiTextField-root": { m: 1, width: "45ch" },
+                "& .MuiTextField-root": {
+                  m: 1,
+                  width: { xs: "28ch", sm: "44ch", md: "45ch" },
+                },
               }}
               noValidate
               autoComplete="on"

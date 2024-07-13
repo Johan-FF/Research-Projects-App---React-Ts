@@ -7,6 +7,16 @@
   margin: 0 auto;
 }
 
+body {
+  background: linear-gradient(
+    to right,
+    #c80036 0%,
+    #0c1844 25%,
+    #0c1844 75%,
+    #c80036 100%
+  );
+}
+
 body::-webkit-scrollbar {
   width: 18px;
 }

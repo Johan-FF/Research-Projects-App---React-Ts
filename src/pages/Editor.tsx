@@ -1,5 +1,6 @@
 import Quill from "quill";
 import { useState, useEffect, MouseEvent } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
@@ -15,9 +16,12 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 
 function Editor() {
+  const navigate = useNavigate();
   const project = useSelector((state: RootState) => state.project);
+  const user = useSelector((state: RootState) => state.user);
   const [quill, setQuill] = useState<null | Quill>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [anchorElMenu, setAnchorElMenu] = useState<null | HTMLElement>(null);
 
   const handleMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -27,6 +31,14 @@ function Editor() {
     setAnchorEl(null);
   };
 
+  const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
+    setAnchorElMenu(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElMenu(null);
+  };
+
   useEffect(() => {
     const editor = new Quill("#editor", {
       modules: {
@@ -34,10 +46,16 @@ function Editor() {
         toolbar: "#toolbar-container",
       },
       theme: "snow",
+      placeholder: "Write here...",
     });
 
     setQuill(editor);
   }, []);
+
+  const handleGoBack = () => {
+    if (user.rol === "Student") navigate("/student");
+    else if (user.rol === "Research") navigate("/research");
+  };
 
   return (
     <main className="bg-primary-dark">
@@ -48,13 +66,31 @@ function Editor() {
               <Toolbar>
                 <IconButton
                   size="large"
-                  edge="start"
+                  aria-label="menu of user"
+                  aria-haspopup="true"
+                  onClick={handleOpenNavMenu}
                   color="inherit"
-                  aria-label="menu"
-                  sx={{ mr: 2 }}
                 >
                   <MenuIcon />
                 </IconButton>
+                <Menu
+                  anchorEl={anchorElMenu}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElMenu)}
+                  onClose={handleCloseNavMenu}
+                >
+                  <MenuItem onClick={handleGoBack}>
+                    <Typography textAlign="center">Go Back</Typography>
+                  </MenuItem>
+                </Menu>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                   {project.name}
                 </Typography>
@@ -63,7 +99,6 @@ function Editor() {
                   <IconButton
                     size="large"
                     aria-label="account of current user"
-                    aria-controls="menu-appbar"
                     aria-haspopup="true"
                     onClick={handleMenu}
                     color="inherit"
@@ -71,10 +106,9 @@ function Editor() {
                     <AccountCircle />
                   </IconButton>
                   <Menu
-                    id="menu-appbar"
                     anchorEl={anchorEl}
                     anchorOrigin={{
-                      vertical: "top",
+                      vertical: "bottom",
                       horizontal: "right",
                     }}
                     keepMounted
@@ -85,8 +119,8 @@ function Editor() {
                     open={Boolean(anchorEl)}
                     onClose={handleClose}
                   >
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
                     <MenuItem onClick={handleClose}>My account</MenuItem>
+                    <MenuItem onClick={handleClose}>Projects</MenuItem>
                   </Menu>
                 </div>
               </Toolbar>
@@ -125,7 +159,7 @@ function Editor() {
             <button className="ql-indent" value="+1"></button>
           </span>
           <span className="ql-formats">
-            <button className="ql-direction" value="rtl"></button>
+            <button className="ql-direction"></button>
             <select className="ql-align"></select>
           </span>
           <span className="ql-formats">

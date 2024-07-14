@@ -84,7 +84,7 @@ function PageHeader() {
               <Button
                 key={section}
                 onClick={() => handleCloseNavMenu(index)}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "white", minWidth: { md: "100px" } }}
               >
                 {section}
               </Button>

@@ -18,8 +18,11 @@ export const userSlice = createSlice({
       state.rol = rol;
       state.email = email;
     },
+    updateUserRol: (state, action) => {
+      state.rol = action.payload;
+    },
   },
 });
 
-export const { updateUser } = userSlice.actions;
+export const { updateUser, updateUserRol } = userSlice.actions;
 export default userSlice.reducer;

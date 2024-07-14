@@ -5,7 +5,7 @@ import { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-import { updateUser } from "../redux/userSlice";
+import { updateUser, updateUserRol } from "../redux/userSlice";
 
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -114,10 +114,13 @@ function Login() {
       .then((data) => {
         dispatch(updateUser(data));
         setToken("ksdfbskhfbdjk");
-        if (password === "password" && email === "student@gmail.com")
+        if (password === "password" && email === "student@gmail.com") {
+          dispatch(updateUserRol("Student"));
           navigate("/student");
-        else if (password === "password" && email === "research@gmail.com")
+        } else if (password === "password" && email === "research@gmail.com") {
+          dispatch(updateUserRol("Research"));
           navigate("/research");
+        }
       })
       .catch((error) => console.log(error));
   };

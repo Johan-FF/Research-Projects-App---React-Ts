@@ -159,7 +159,7 @@ function Editor() {
             <button className="ql-indent" value="+1"></button>
           </span>
           <span className="ql-formats">
-            <button className="ql-direction"></button>
+            <button className="ql-direction" value="rtl"></button>
             <select className="ql-align"></select>
           </span>
           <span className="ql-formats">

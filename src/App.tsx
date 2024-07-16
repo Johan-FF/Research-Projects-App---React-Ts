@@ -31,10 +31,7 @@ function App() {
           path="/research"
           element={token ? <Research /> : <Navigate to="/" />}
         />
-        <Route
-          path="/editor"
-          element={token ? <Editor /> : <Navigate to="/" />}
-        />
+        <Route path="/editor" element={token ? <Editor /> : <Editor />} />
       </Routes>
     </Router>
   );

@@ -1,5 +1,5 @@
-import Quill from "quill";
-import { useState, useEffect, MouseEvent } from "react";
+import ReactQuill from "react-quill";
+import { useState, MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
@@ -15,18 +15,59 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 
+const toolbarOptions = [
+  [{ font: [] }, { size: [] }, { header: [1, 2, 3, 4, 5, 6, false] }],
+  ["bold", "italic", "underline", "strike"],
+  [{ color: [] }, { background: [] }],
+  [{ script: "sub" }, { script: "super" }],
+  [{ header: 1 }, { header: 2 }, "blockquote", "code-block"],
+  [{ list: "ordered" }, { list: "bullet" }, { indent: "-1" }, { indent: "+1" }],
+  [{ direction: ["invert"] }, { align: ["", "center", "right", "justify"] }],
+  ["link", "image", "video", "formula"],
+  ["clean"],
+];
+
+const modules = {
+  toolbar: toolbarOptions,
+};
+
+const formats = [
+  "header",
+  "bold",
+  "italic",
+  "underline",
+  "strike",
+  "blockquote",
+  "color",
+  "background",
+  "list",
+  "direction",
+  "align",
+  "bullet",
+  "indent",
+  "link",
+  "image",
+  "video",
+  "formula",
+  "script",
+  "code-block",
+  "clean",
+];
+
+const placeholder = "Write your content here...";
+
 function Editor() {
-  const navigate = useNavigate();
   const project = useSelector((state: RootState) => state.project);
   const user = useSelector((state: RootState) => state.user);
-  const [quill, setQuill] = useState<null | Quill>(null);
+
+  const navigate = useNavigate();
+  const [content, setContent] = useState("");
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [anchorElMenu, setAnchorElMenu] = useState<null | HTMLElement>(null);
 
   const handleMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -34,23 +75,9 @@ function Editor() {
   const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElMenu(event.currentTarget);
   };
-
   const handleCloseNavMenu = () => {
     setAnchorElMenu(null);
   };
-
-  useEffect(() => {
-    const editor = new Quill("#editor", {
-      modules: {
-        syntax: true,
-        toolbar: "#toolbar-container",
-      },
-      theme: "snow",
-      placeholder: "Write here...",
-    });
-
-    setQuill(editor);
-  }, []);
 
   const handleGoBack = () => {
     if (user.rol === "Student") navigate("/student");
@@ -58,8 +85,8 @@ function Editor() {
   };
 
   return (
-    <main className="bg-primary-dark">
-      <section className="w-full h-[30vh] md:h-[24vh] lg:h-[16vh]">
+    <main className="text-editor bg-primary-dark">
+      <section className="w-full h-[10vh] md:h-[12vh] lg:h-[10vh]">
         <div>
           <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" sx={{ backgroundColor: "transparent" }}>
@@ -127,60 +154,22 @@ function Editor() {
             </AppBar>
           </Box>
         </div>
-        <div id="toolbar-container" className="flex justify-center">
-          <span className="ql-formats">
-            <select className="ql-font"></select>
-            <select className="ql-size"></select>
-          </span>
-          <span className="ql-formats">
-            <button className="ql-bold"></button>
-            <button className="ql-italic"></button>
-            <button className="ql-underline"></button>
-            <button className="ql-strike"></button>
-          </span>
-          <span className="ql-formats">
-            <select className="ql-color"></select>
-            <select className="ql-background"></select>
-          </span>
-          <span className="ql-formats">
-            <button className="ql-script" value="sub"></button>
-            <button className="ql-script" value="super"></button>
-          </span>
-          <span className="ql-formats">
-            <button className="ql-header" value="1"></button>
-            <button className="ql-header" value="2"></button>
-            <button className="ql-blockquote"></button>
-            <button className="ql-code-block"></button>
-          </span>
-          <span className="ql-formats">
-            <button className="ql-list" value="ordered"></button>
-            <button className="ql-list" value="bullet"></button>
-            <button className="ql-indent" value="-1"></button>
-            <button className="ql-indent" value="+1"></button>
-          </span>
-          <span className="ql-formats">
-            <button className="ql-direction"></button>
-            <select className="ql-align"></select>
-          </span>
-          <span className="ql-formats">
-            <button className="ql-link"></button>
-            <button className="ql-image"></button>
-            <button className="ql-video"></button>
-            <button className="ql-formula"></button>
-          </span>
-          <span className="ql-formats">
-            <button className="ql-clean"></button>
-          </span>
-        </div>
       </section>
       <section className="w-full min-h-[80vh] md:min-h-[84vh] flex justify-center text-quaternary-dark pb-8">
         <div className="relative h-[90vh] md:h-[1123px] w-[90%] md:w-[794px]">
           <span className="absolute top-0 left-0 h-full w-full bg-black opacity-50 "></span>
 
-          <div
-            id="editor"
-            className="absolute top-0 left-0 h-full w-full"
-          ></div>
+          <div className="absolute top-0 left-0 h-full w-full">
+            <ReactQuill
+              className="w-full h-[96%]"
+              theme="snow"
+              value={content}
+              onChange={setContent}
+              modules={modules}
+              formats={formats}
+              placeholder={placeholder}
+            />
+          </div>
         </div>
       </section>
     </main>

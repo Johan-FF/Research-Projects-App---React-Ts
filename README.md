@@ -1,4 +1,10 @@
-# React + TypeScript + Vite
+# Rearch Projects App
+
+![Researchs_projects](https://github.com/user-attachments/assets/4ed4738d-e2ca-4d73-a1ab-dceb71dca40b)
+
+This project deals with an application in which there are two types of users, students and researchers. The application manages the creation of research projects in a collaborative way, so that students can write and researchers can review.
+
+## React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
